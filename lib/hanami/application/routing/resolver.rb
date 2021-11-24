@@ -76,7 +76,15 @@ module Hanami
           slice = slices[slice_name]
           endpoint_key = "#{ENDPOINT_KEY_NAMESPACE}.#{identifier}"
 
-          slice[endpoint_key]
+          # Lazily resolve the endpoint from the slice to allow us to have the router
+          # initialize at any point during application boot lifecycle, for example, when
+          # lazily loading an action from a non-booted application; in this case, given we
+          # inject the routes helper into the action, that will initialize the router if
+          # it is not present yet, which without the proc wrapper below will lead to an
+          # infinite loop, since the router would try and initialize each action in the
+          # app (which in turn would get the routes helper, which would try to initializer
+          # the router again, etc etc.)
+          -> (*args) { slice[endpoint_key].call(*args) }
         end
       end
     end
