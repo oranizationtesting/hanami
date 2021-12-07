@@ -13,21 +13,6 @@ gem "addressable"
 gem 'pg_query'
 
 gem 'rack'
-gem "devise"
-gem "breakman"
-gem "redis"
-
-gem 'webpacker'
-gem 'ruby-progressbar'
-gem 'sidekiq-pro'
-gem 'strong_migrations'
-gem 'faraday'
-
-gem 'hashie'
-gem 'hiredis'
-gem 'httparty'
-gem 'ipcat'
-gem 'jwt'
 gem 'bootstrap-sass' # Bootstrap 3
 gem 'buffer', github: 'bufferapp/buffer-ruby'
 gem 'carrierwave'
