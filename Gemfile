@@ -23,6 +23,15 @@ gem 'sidekiq-pro'
 gem 'strong_migrations'
 gem 'faraday'
 
+gem 'hashie'
+gem 'hiredis'
+gem 'httparty'
+gem 'ipcat'
+gem 'jwt'
+gem 'bootstrap-sass' # Bootstrap 3
+gem 'buffer', github: 'bufferapp/buffer-ruby'
+gem 'carrierwave'
+
 gem "hanami-devtools", require: false, git: "https://github.com/hanami/devtools.git", branch: "main"
 
 gem "dry-files", git: "https://github.com/dry-rb/dry-files.git", branch: "master"
