@@ -8,8 +8,9 @@ unless ENV["CI"]
   gem "yard",   require: false
 end
 
-gem "devise"
 gem "breakman"
+gem "addressable"
+gem "kaminari"
 
 gem "hanami-devtools", require: false, git: "https://github.com/hanami/devtools.git", branch: "main"
 
