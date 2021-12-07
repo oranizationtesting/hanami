@@ -9,7 +9,6 @@ unless ENV["CI"]
 end
 
 gem "addressable"
-gem "kaminari"
 
 gem 'pg_query'
 
@@ -17,6 +16,12 @@ gem 'rack'
 gem "devise"
 gem "breakman"
 gem "redis"
+
+gem 'webpacker'
+gem 'ruby-progressbar'
+gem 'sidekiq-pro'
+gem 'strong_migrations'
+gem 'faraday'
 
 gem "hanami-devtools", require: false, git: "https://github.com/hanami/devtools.git", branch: "main"
 
