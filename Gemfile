@@ -12,7 +12,67 @@ gem "addressable"
 
 gem 'pg_query'
 
+gem 'rack'
+gem 'bootstrap-sass' # Bootstrap 3
+gem 'buffer', github: 'bufferapp/buffer-ruby'
+gem 'carrierwave'
 
+gem "hanami-devtools", require: false, git: "https://github.com/hanami/devtools.git", branch: "main"
+
+gem "dry-files", git: "https://github.com/dry-rb/dry-files.git", branch: "master"
+gem "dry-configurable", git: "https://github.com/dry-rb/dry-configurable.git", branch: "master"
+
+group :test do
+  gem "dotenv"
+  gem "dry-types"
+  gem "slim"
+end
+
+platforms :ruby do
+    if /mysql/.match?(ENV['DB']) || ENV['DB_ALL']
+      gem 'mysql2', '~> 0.5.0', require: false
+    end
+    if /postgres/.match?(ENV['DB']) || ENV['DB_ALL']
+      gem 'pg', '~> 1.0', require: false
+    end
+    if ENV['DB_ALL'] || !/mysql|postgres/.match?(ENV['DB'])
+      gem 'sqlite3', require: false
+      gem 'fast_sqlite', require: false
+    end
+  end
+
+  platforms :jruby do
+    gem 'jruby-openssl', require: false
+    gem 'activerecord-jdbcsqlite3-adapter', require: false
+  end
+
+  gem 'database_cleaner', '~> 1.3', require: false
+  gem 'rspec-activemodel-mocks', '~> 1.1', require: false
+  gem 'rspec-rails', '~> 4.0.1', require: false
+  gem 'simplecov', require: false
+  gem 'with_model', require: false
+  gem 'rails-controller-testing', require: false
+  gem 'puma', require: false
+
+  # Ensure the requirement is also updated in core/lib/spree/testing_support.rb
+  gem 'factory_bot_rails', '~> 4.8', require: false
+end
+
+group :backend, :frontend do
+  gem 'capybara', '~> 3.13', require: false
+  gem 'capybara-screenshot', '>= 1.0.18', require: false
+  gem 'selenium-webdriver', require: false
+  gem 'webdrivers', require: false
+end
+
+group :frontend do
+  gem 'generator_spec'
+end
+
+group :backend do
+  gem 'teaspoon', github: 'jejacks0n/teaspoon', require: false
+  gem 'teaspoon-mocha', github: 'jejacks0n/teaspoon', require: false
+end
 
 group :utils do
   gem 'pry'
